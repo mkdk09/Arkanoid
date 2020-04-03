@@ -171,6 +171,12 @@ const play = (arkanoid) => {
             }
         }
     }
+    
+    //clear判定
+    if (tiles.every(tilesRow => tilesRow.every(tile => !tile.isAlive))) {
+        arkanoid.status = 'clear'
+        arkanoid.clear()
+    }
 }
 
 const render = (ctx, arkanoid) => {
@@ -216,6 +222,12 @@ window.onload = () => {
             ctx.fillStyle = 'red'
             ctx.textAlign = 'center'
             ctx.fillText('Game Over', fieldWidth / 2, fieldHeight / 2)
+        },
+        clear() { //ゲームクリア時
+            ctx.font = '50px Arial'
+            ctx.fillStyle = 'red'
+            ctx.textAlign = 'center'
+            ctx.fillText('Game Clear', fieldWidth / 2, fieldHeight / 2)
         },
     }
 
